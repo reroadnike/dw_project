@@ -8,6 +8,7 @@ use app\admin\Base;
 use app\admin\model;
 use think\Db;
 use think\Session;
+use think\facade\Request;
 
 class Login  extends Base {
     public function initialize() {
@@ -28,7 +29,8 @@ class Login  extends Base {
     //登录验证方法
     public function login() {
         if(request()->isPost()) {
-            $data = input('post.');
+            // $data = input('post.');
+            $data = Request::post();
             //验证post数据
             $info = Db::name('admin')->where('user_name',$data['user_name'])->find();
 

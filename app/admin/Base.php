@@ -7,6 +7,7 @@ namespace app\admin;
 use think\Controller;
 use think\Exception;
 use think\Session;
+use think\facade\Request;
 
 class Base extends Controller {
 	public function _initialize() {
@@ -37,5 +38,5 @@ class Base extends Controller {
 		return false;
 	}
 
-	//测试git上传代码
+
 }
