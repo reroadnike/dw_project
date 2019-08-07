@@ -11,12 +11,15 @@ use think\facade\Request;
 
 class Base extends Controller {
 	public function _initialize() {
-
 		//判断是否登录
 		$isLogin = $this->isLogin();
 		if(!$isLogin) {
 			return $this->redirect('login/index');
 		}
+		$controller = request()->controller();
+		$action = request()->action();
+		$this->assign('controller',$controller);
+		$this->assign('action',$action);
 	}
 
 	public function _empty(){     

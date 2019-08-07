@@ -244,23 +244,35 @@
 
                 <!-- <li class="sidebar-nav-heading">Page<span class="sidebar-nav-heading-info"> 常用页面</span></li> -->
                 <li class="sidebar-nav-link">
-                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                    {if $controller == 'User'}
+                        <a href="javascript:;" class="sidebar-nav-sub-title active">
+                    {else /}
+                        <a href="javascript:;" class="sidebar-nav-sub-title">
+                    {/if}
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 管理员
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
-                    <ul class="sidebar-nav sidebar-nav-sub">
-                        <li class="sidebar-nav-link">
-                            <a href="{:url('admin/user/index')}" ><!-- {:url('admin/user/index')} javascript:;-->
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 管理员信息
-                            </a>
-                        </li>
+                    {if $controller == 'User'}
+                        <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                    {else /}
+                        <ul class="sidebar-nav sidebar-nav-sub" style="display: none;">
+                    {/if}
+                        {if  $controller == 'User' and $action == 'index'}
+                            <li  class="am-btn-default">
+                        {else /}
+                            <li  class="sidebar-nav-link">
+                        {/if}
+                                <a href="{:url('user/index')}" ><!-- {:url('admin/user/index')} javascript:;-->
+                                    <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 管理员信息
+                                </a>
+                            </li>
 
-                        <li class="sidebar-nav-link">
-                            <a href="table-list-img.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 商家入驻
-                            </a>
-                        </li>
-                    </ul>
+                            <li class="sidebar-nav-link">
+                                <a href="{:url('user/test')}">
+                                    <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 商家入驻
+                                </a>
+                            </li>
+                        </ul>
                 </li>
 <!--                 <li class="sidebar-nav-link">
                     <a href="sign-up.html">
