@@ -41,9 +41,9 @@
                                 </div> -->
                                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="float: right;">
                                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                        <input type="text" class="am-form-field ">
+                                        <input type="text" class="am-form-field " id="getSelect" placeholder="输入管理员名称">
                                         <span class="am-input-group-btn">
-            <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button"></button>
+            <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button" onclick="getSelect()"></button>
           </span>
                                     </div>
                                 </div>
@@ -126,6 +126,19 @@
 {/block}
 
 {block name="foot"}
+
+<script type="text/javascript">
+    
+    function getSelect() {
+        var getSelect = $('#getSelect').val();
+        var data = {user_name:getSelect};
+        $.post('/admin/user/getSelect',data,function(data) {
+
+        });
+    }
+
+
+</script>
 
 
 {/block}

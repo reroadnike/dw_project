@@ -12,18 +12,20 @@ class User extends Base{
 	
     public function index() {
         $admin = new Admin;
-        // $list = $this->allPage();
         $list = $admin->pageList();
         $page = $list->render();
         $this->assign('page', $page);
         $this->assign('list',$list);
         return $this->fetch();
-        //print_r($list);die;
+    }
 
-/*    	$list = Db::name('admin')->paginate(10,false,['query' => request()->param()]);
-    	$page = $list->render();
-    	$this->assign('page', $page);
-    	$this->assign('list',$list);
-    	return $this->fetch();*/
+
+    public function getSelect() {
+        $data = input('post.');
+        // $map['user_name'] = array('like','%'.$data['user_name'].'%');
+        $map = ['user_name', 'like', $data['user_name'].'%'];
+        $admin = new Admin;
+        $list = $admin->getAdmin($map);
+        print_r($list);
     }
 }
